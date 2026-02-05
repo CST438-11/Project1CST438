@@ -6,4 +6,5 @@
     <string name="sign_up">Sign Up</string>
     <string name="easyrate_app_logo">EasyRate App Logo</string>
     <string name="exhangerate_api_logo">ExhangeRate-API Logo</string>
+    <string name="title_activity_display">Display</string>
 </resources>

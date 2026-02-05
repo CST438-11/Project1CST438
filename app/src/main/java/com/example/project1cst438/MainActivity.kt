@@ -1,5 +1,6 @@
 package com.example.project1cst438
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -26,6 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.project1cst438.ui.theme.Project1CST438Theme
+import androidx.compose.ui.platform.LocalContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,6 +96,21 @@ fun HomeDisplay() {
                 )
             ) {
                 Text("Sign Up")
+            }
+
+            // Temp button to test display page
+            val context = LocalContext.current
+            Button(
+                onClick = {
+                    context.startActivity(
+                        Intent(context, Display::class.java)
+                    )
+                },
+                modifier = Modifier
+                    .padding(bottom = 40.dp)
+                    .fillMaxWidth(0.6f)
+            ) {
+                Text("View Exchange Rates")
             }
         }
     }
