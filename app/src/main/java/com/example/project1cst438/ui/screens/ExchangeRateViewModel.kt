@@ -22,7 +22,9 @@ sealed interface ExchangeRateUiState {
 
 class ExchangeRateViewModel: ViewModel() {
     /** The mutable State that stores the status of the most recent request */
-    var rates by mutableStateOf<ExchangeRateResponse?>(null)
+//    var rates by mutableStateOf<ExchangeRateResponse?>(null)
+    // Return raw api response for testing
+    var rawResponse by mutableStateOf<String?>(null)
         private set
 
     /**
@@ -35,7 +37,9 @@ class ExchangeRateViewModel: ViewModel() {
     private fun fetchRates() {
         viewModelScope.launch {
             try {
-                rates = ExchangeRateApi.retrofitService.getRates()
+//                rates = ExchangeRateApi.retrofitService.getRates()
+                // raw response for testing
+                rawResponse = ExchangeRateApi.retrofitService.getRates().string()
             } catch (e: Exception) {
                 Log.e("API", "Error: ${e.message}")
             }

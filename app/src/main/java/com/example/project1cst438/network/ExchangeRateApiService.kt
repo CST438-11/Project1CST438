@@ -1,6 +1,7 @@
 package com.example.project1cst438.network
 
 import com.example.project1cst438.model.ExchangeRateResponse
+import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -15,8 +16,11 @@ private val retrofit = Retrofit.Builder()
 
 interface ExchangeRateApiService {
     @GET("USD")
-    suspend fun getRates(): ExchangeRateResponse
+    // Testing with raw response as string
+//    suspend fun getRates(): ExchangeRateResponse
+    suspend fun getRates(): ResponseBody
 }
+
 
 object ExchangeRateApi {
     val retrofitService : ExchangeRateApiService by lazy {
