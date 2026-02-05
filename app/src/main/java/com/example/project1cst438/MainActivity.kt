@@ -23,11 +23,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.project1cst438.ui.theme.Project1CST438Theme
-import androidx.compose.ui.platform.LocalContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +50,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun HomeDisplay() {
+    val context = LocalContext.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -79,7 +80,7 @@ fun HomeDisplay() {
             modifier = Modifier.padding(horizontal = 20.dp)) {
             Button(
                 onClick = {
-                    // TODO: Wire button to finished pages
+                    context.startActivity(Intent(context, LoginActivity::class.java))
                 },
                 modifier = Modifier.width(100.dp)
             ) {
@@ -87,7 +88,7 @@ fun HomeDisplay() {
             }
             Button(
                 onClick = {
-                    // TODO: Wire button to finished pages
+                    context.startActivity(Intent(context, SignUpActivity::class.java))
                 },
                 modifier = Modifier.width(100.dp),
                 colors = ButtonDefaults.buttonColors(
