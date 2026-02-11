@@ -1,11 +1,13 @@
 package com.example.project1cst438
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +15,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -20,6 +24,7 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,6 +35,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -44,9 +50,24 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.data.local.DatabaseProvider
+import com.data.local.UserRepository
+import com.example.project1cst438.ui.screens.SignUpViewModel
+import com.example.project1cst438.ui.screens.SignUpViewModelFactory
 import com.example.project1cst438.ui.theme.Project1CST438Theme
 
 class SignUpActivity : ComponentActivity() {
+//    Gets the SignUpViewModel that is tied to this activity
+//    Gets room database instance, so we don't keep recreating db (singleton)
+//    Creates repo which is the class that talks to Room through DAO
+//    Finally, creating the SignUpViewModel
+    private val viewModel: SignUpViewModel by viewModels {
+        val db = DatabaseProvider.getDatabase(this);
+        val repo = UserRepository(db.userDao());
+        SignUpViewModelFactory(repo);
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -54,17 +75,8 @@ class SignUpActivity : ComponentActivity() {
             Project1CST438Theme {
                 SignUpScreen(
                     onBack = { finish() },
-                    onSignUp = { name, email, password ->
-                        // TODO: Replace this with your real sign-up call (Firebase / API / Room / etc.)
-                        Toast.makeText(
-                            this,
-                            "Signed up: $name ($email)",
-                            Toast.LENGTH_LONG
-                        ).show()
+                    viewModelz = viewModel
 
-                        // Example: go back after “success”
-                        finish()
-                    }
                 )
             }
         }
@@ -75,51 +87,12 @@ class SignUpActivity : ComponentActivity() {
 @Composable
 fun SignUpScreen(
     onBack: () -> Unit,
-    onSignUp: (name: String, email: String, password: String) -> Unit
+    viewModelz: SignUpViewModel
+
 ) {
     val context = LocalContext.current
-
-    var name by rememberSaveable { mutableStateOf("") }
-    var email by rememberSaveable { mutableStateOf("") }
-    var password by rememberSaveable { mutableStateOf("") }
-    var confirmPassword by rememberSaveable { mutableStateOf("") }
-
     var passwordVisible by rememberSaveable { mutableStateOf(false) }
     var confirmPasswordVisible by rememberSaveable { mutableStateOf(false) }
-
-    var nameError by remember { mutableStateOf<String?>(null) }
-    var emailError by remember { mutableStateOf<String?>(null) }
-    var passwordError by remember { mutableStateOf<String?>(null) }
-    var confirmError by remember { mutableStateOf<String?>(null) }
-
-    fun validate(): Boolean {
-        nameError = null
-        emailError = null
-        passwordError = null
-        confirmError = null
-
-        val trimmedName = name.trim()
-        val trimmedEmail = email.trim()
-
-        var ok = true
-        if (trimmedName.length < 2) {
-            nameError = "Enter your name"
-            ok = false
-        }
-        if (trimmedEmail.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(trimmedEmail).matches()) {
-            emailError = "Enter a valid email"
-            ok = false
-        }
-        if (password.length < 8) {
-            passwordError = "Password must be at least 8 characters"
-            ok = false
-        }
-        if (confirmPassword != password) {
-            confirmError = "Passwords do not match"
-            ok = false
-        }
-        return ok
-    }
 
     Scaffold(
         topBar = {
@@ -161,12 +134,12 @@ fun SignUpScreen(
                     )
 
                     OutlinedTextField(
-                        value = name,
-                        onValueChange = { name = it },
-                        label = { Text("Name") },
+                        value = viewModelz.username,
+                        onValueChange = viewModelz::onUserNameChange,
+                        label = {Text("Name") } ,
                         singleLine = true,
-                        isError = nameError != null,
-                        supportingText = { if (nameError != null) Text(nameError!!) },
+                        isError = viewModelz.userNameError != null,
+                        supportingText = { if (viewModelz.userNameError != null) Text(viewModelz.userNameError!!) },
                         modifier = Modifier.fillMaxWidth(),
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Text,
@@ -175,26 +148,12 @@ fun SignUpScreen(
                     )
 
                     OutlinedTextField(
-                        value = email,
-                        onValueChange = { email = it },
-                        label = { Text("Email") },
-                        singleLine = true,
-                        isError = emailError != null,
-                        supportingText = { if (emailError != null) Text(emailError!!) },
-                        modifier = Modifier.fillMaxWidth(),
-                        keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Email,
-                            imeAction = ImeAction.Next
-                        )
-                    )
-
-                    OutlinedTextField(
-                        value = password,
-                        onValueChange = { password = it },
+                        value = viewModelz.password,
+                        onValueChange = viewModelz::onPasswordChange,
                         label = { Text("Password") },
                         singleLine = true,
-                        isError = passwordError != null,
-                        supportingText = { if (passwordError != null) Text(passwordError!!) },
+                        isError = viewModelz.passwordError != null,
+                        supportingText = { if (viewModelz.passwordError != null) Text(viewModelz.passwordError!!) },
                         modifier = Modifier.fillMaxWidth(),
                         visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                         trailingIcon = {
@@ -212,12 +171,12 @@ fun SignUpScreen(
                     )
 
                     OutlinedTextField(
-                        value = confirmPassword,
-                        onValueChange = { confirmPassword = it },
+                        value = viewModelz.confirmPassword,
+                        onValueChange = viewModelz::onConfirmPasswordChange,
                         label = { Text("Confirm Password") },
                         singleLine = true,
-                        isError = confirmError != null,
-                        supportingText = { if (confirmError != null) Text(confirmError!!) },
+                        isError = viewModelz.confirmPaswordError != null,
+                        supportingText = { if (viewModelz.confirmPaswordError != null) Text(viewModelz.confirmPaswordError!!) },
                         modifier = Modifier.fillMaxWidth(),
                         visualTransformation = if (confirmPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                         trailingIcon = {
@@ -238,26 +197,32 @@ fun SignUpScreen(
 
                     Button(
                         onClick = {
-                            if (validate()) {
-                                onSignUp(name.trim(), email.trim(), password)
-                            } else {
-                                Toast.makeText(context, "Please fix the errors", Toast.LENGTH_SHORT).show()
-                            }
+                          viewModelz.onSignUpClicked { success ->
+                              if (success) {
+                                  Toast.makeText(context, "Successfully created!", Toast.LENGTH_SHORT).show()
+//                                  context.startActivity(Intent(context, MainActivity::class.java))
+                              } else {
+                                  Toast.makeText(context, "Username already exist!", Toast.LENGTH_SHORT).show()
+                              }
+                          }
+
+
                         },
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text("Create account")
                     }
+
                 }
             }
         }
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun SignUpPreview() {
-    Project1CST438Theme {
-        SignUpScreen(onBack = {}, onSignUp = { _, _, _ -> })
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun SignUpPreview() {
+//    Project1CST438Theme {
+//        SignUpScreen(onBack = {}, viewModelz = viewModel())
+//    }
+//}
