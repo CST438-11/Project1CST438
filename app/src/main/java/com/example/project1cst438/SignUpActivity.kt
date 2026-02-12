@@ -44,6 +44,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -140,7 +141,7 @@ fun SignUpScreen(
                         singleLine = true,
                         isError = viewModelz.userNameError != null,
                         supportingText = { if (viewModelz.userNameError != null) Text(viewModelz.userNameError!!) },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().testTag("name"),
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Text,
                             imeAction = ImeAction.Next
@@ -154,7 +155,7 @@ fun SignUpScreen(
                         singleLine = true,
                         isError = viewModelz.passwordError != null,
                         supportingText = { if (viewModelz.passwordError != null) Text(viewModelz.passwordError!!) },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().testTag("password"),
                         visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                         trailingIcon = {
                             IconButton(onClick = { passwordVisible = !passwordVisible }) {
@@ -177,7 +178,7 @@ fun SignUpScreen(
                         singleLine = true,
                         isError = viewModelz.confirmPaswordError != null,
                         supportingText = { if (viewModelz.confirmPaswordError != null) Text(viewModelz.confirmPaswordError!!) },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().testTag("confirmPassword"),
                         visualTransformation = if (confirmPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                         trailingIcon = {
                             IconButton(onClick = { confirmPasswordVisible = !confirmPasswordVisible }) {
@@ -208,7 +209,7 @@ fun SignUpScreen(
 
 
                         },
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth().testTag("button")
                     ) {
                         Text("Create account")
                     }
