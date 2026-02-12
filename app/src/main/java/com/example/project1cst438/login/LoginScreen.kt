@@ -1,4 +1,10 @@
 package com.example.project1cst438.login
 
-class LoginScreen {
+import androidx.compose.runtime.Composable
+
+@Composable
+fun LoginScreen() {
+    val context = LocalContext.current
+    val db = AppDatabase.getInstance(context)
+    val repository = UserRepository(db.userDao())
 }
