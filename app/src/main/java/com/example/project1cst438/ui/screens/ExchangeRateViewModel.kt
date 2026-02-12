@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.project1cst438.model.ExchangeRateResponse
+import com.example.project1cst438.model.ExchangeRatesResponse
 import kotlinx.coroutines.launch
 import com.example.project1cst438.network.ExchangeRateApi
 
@@ -24,12 +24,12 @@ class ExchangeRateViewModel: ViewModel() {
     /** The mutable State that stores the status of the most recent request */
 //    var rates by mutableStateOf<ExchangeRateResponse?>(null)
     // Return raw api response for testing
-    var rawResponse by mutableStateOf<String?>(null)
+    var rates by mutableStateOf<ExchangeRatesResponse?>(null)
         private set
 
-    /**
-     * Call getMarsPhotos() on init so we can display status immediately.
-     */
+    var errorMessage by mutableStateOf<String?>(null)
+        private set
+
     init {
         fetchRates()
     }
@@ -37,22 +37,12 @@ class ExchangeRateViewModel: ViewModel() {
     private fun fetchRates() {
         viewModelScope.launch {
             try {
-//                rates = ExchangeRateApi.retrofitService.getRates()
-                // raw response for testing
-                rawResponse = ExchangeRateApi.retrofitService.getRates().string()
+                rates = ExchangeRateApi.retrofitService.getRates()
+                errorMessage = null;
             } catch (e: Exception) {
-                Log.e("API", "Error: ${e.message}")
+                Log.e("API", "Error: ${e.message}", e)
+                errorMessage = e.message ?: "Unknown error"
             }
         }
     }
-
-//    companion object {
-//        val Factory: ViewModelProvider.Factory = viewModelFactory {
-//            initializer {
-//                val application = (this[APPLICATION_KEY] as MarsPhotosApplication)
-//                val marsPhotosRepository = application.container.marsPhotosRepository
-//                MarsViewModel(marsPhotosRepository = marsPhotosRepository)
-//            }
-//        }
-//    }
 }
