@@ -200,10 +200,10 @@ fun SignUpScreen(
                         onClick = {
                           viewModelz.onSignUpClicked { success ->
                               if (success) {
-                                  Toast.makeText(context, "Successfully created!", Toast.LENGTH_SHORT).show()
-//                                  context.startActivity(Intent(context, MainActivity::class.java))
+                                  Toast.makeText(context, "Successfully created!", Toast.LENGTH_LONG).show()
+                                  context.startActivity(Intent(context, MainActivity::class.java))
                               } else {
-                                  Toast.makeText(context, "Username already exist!", Toast.LENGTH_SHORT).show()
+                                  Toast.makeText(context, "Invalid Input / User exists!", Toast.LENGTH_SHORT).show()
                               }
                           }
 
