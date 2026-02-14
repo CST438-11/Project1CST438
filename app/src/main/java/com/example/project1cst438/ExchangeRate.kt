@@ -1,5 +1,6 @@
 package com.example.project1cst438
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,7 +25,9 @@ import com.example.project1cst438.ui.screens.ExchangeRateViewModel
 import com.example.project1cst438.ui.theme.Project1CST438Theme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
+import androidx.compose.ui.platform.LocalContext
 
 
 class Display : ComponentActivity() {
@@ -49,7 +52,20 @@ fun ExchangeRateScreen(
 
     val rates = viewModel.rates
     val error = viewModel.errorMessage
-
+    val context = LocalContext.current
+    Button(
+        onClick = {
+            context.startActivity(
+                Intent(context, MainActivity::class.java)
+            )
+        },
+        modifier = Modifier
+            .padding(bottom = 40.dp)
+            .padding(top = 50.dp)
+            .fillMaxWidth(0.5f)
+    ) {
+        Text("Back to Home")
+    }
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         when {
             error != null -> Text("Error: $error")
@@ -64,6 +80,7 @@ fun ExchangeRateScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(16.dp)
+                        .padding(top = 50.dp)
                 ) {
                     // Header row
                     item {

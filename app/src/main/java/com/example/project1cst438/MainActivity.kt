@@ -111,7 +111,7 @@ fun HomeDisplay() {
             },
             modifier = Modifier
                 .padding(bottom = 40.dp)
-                .fillMaxWidth(0.6f)
+                .fillMaxWidth(0.5f)
         ) {
             Text("View Exchange Rates")
         }
