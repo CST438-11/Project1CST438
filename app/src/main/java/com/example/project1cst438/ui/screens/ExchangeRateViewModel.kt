@@ -30,14 +30,23 @@ class ExchangeRateViewModel: ViewModel() {
     var errorMessage by mutableStateOf<String?>(null)
         private set
 
+    var baseCurrency by mutableStateOf("USD")
+        private set
+
     init {
+        fetchRates()
+    }
+
+    // Call api with user input
+    fun changeBaseCurrency(newBase: String) {
+        baseCurrency = newBase
         fetchRates()
     }
 
     private fun fetchRates() {
         viewModelScope.launch {
             try {
-                rates = ExchangeRateApi.retrofitService.getRates()
+                rates = ExchangeRateApi.retrofitService.getRates(base = baseCurrency)
                 errorMessage = null;
             } catch (e: Exception) {
                 Log.e("API", "Error: ${e.message}", e)
