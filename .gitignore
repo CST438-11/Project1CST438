@@ -198,6 +198,8 @@ obj/
 .idea/deploymentTargetSelector.xml
 .idea/runConfigurations.xml
 .idea/AndroidProjectSystem.xml
+.idea/androidTestResultsUserPreferences.xml
+
 
 # Legacy Eclipse project files
 .classpath

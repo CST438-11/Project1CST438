@@ -99,20 +99,21 @@ fun HomeDisplay() {
                 Text("Sign Up")
             }
 
-            // Temp button to test display page
-            val context = LocalContext.current
-            Button(
-                onClick = {
-                    context.startActivity(
-                        Intent(context, Display::class.java)
-                    )
-                },
-                modifier = Modifier
-                    .padding(bottom = 40.dp)
-                    .fillMaxWidth(0.6f)
-            ) {
-                Text("View Exchange Rates")
-            }
+        }
+
+        // Temp button to test display page
+        val context = LocalContext.current
+        Button(
+            onClick = {
+                context.startActivity(
+                    Intent(context, Display::class.java)
+                )
+            },
+            modifier = Modifier
+                .padding(bottom = 40.dp)
+                .fillMaxWidth(0.5f)
+        ) {
+            Text("View Exchange Rates")
         }
     }
 }
