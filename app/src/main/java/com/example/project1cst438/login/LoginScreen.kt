@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun LoginScreen(viewModel: LoginViewModel, modifier: Modifier = Modifier) {
+fun LoginScreen(viewModel: LoginViewModel, modifier: Modifier = Modifier, onBackClick: () -> Unit) {
     val username by viewModel.username
     val password by viewModel.password
     val loginResult by viewModel.loginResult
@@ -22,6 +22,10 @@ fun LoginScreen(viewModel: LoginViewModel, modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Button(onClick = onBackClick) {
+            Text("Back")
+        }
+
         Text(
             "Enter Credentials",
             fontSize = 28.sp,
