@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -53,18 +54,34 @@ fun ExchangeRateScreen(
     val rates = viewModel.rates
     val error = viewModel.errorMessage
     val context = LocalContext.current
-    Button(
-        onClick = {
-            context.startActivity(
-                Intent(context, MainActivity::class.java)
-            )
-        },
-        modifier = Modifier
-            .padding(bottom = 40.dp)
-            .padding(top = 50.dp)
-            .fillMaxWidth(0.5f)
-    ) {
-        Text("Back to Home")
+    Row(modifier = modifier.fillMaxWidth()) {
+        Modifier
+        Button(
+            onClick = {
+                context.startActivity(
+                    Intent(context, MainActivity::class.java)
+                )
+            },
+            modifier = Modifier
+//                .padding(bottom = 40.dp)
+                .padding(top = 10.dp)
+                .fillMaxWidth(0.5f)
+        ) {
+            Text("Back to Home")
+        }
+
+        Button(
+            onClick = {
+
+
+            },
+            modifier = Modifier
+//                .padding(bottom = 40.dp)
+                .padding(top = 10.dp)
+                .fillMaxWidth()
+        ) {
+            Text("Pair conversion")
+        }
     }
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         when {
@@ -80,7 +97,7 @@ fun ExchangeRateScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(16.dp)
-                        .padding(top = 50.dp)
+                        .padding(top = 60.dp)
                 ) {
                     // Header row
                     item {
