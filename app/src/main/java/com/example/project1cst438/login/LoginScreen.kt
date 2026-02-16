@@ -1,22 +1,34 @@
 package com.example.project1cst438.login
 
+import android.content.Intent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.project1cst438.Display
 
 @Composable
 fun LoginScreen(viewModel: LoginViewModel, modifier: Modifier = Modifier, onBackClick: () -> Unit) {
     val username by viewModel.username
     val password by viewModel.password
     val loginResult by viewModel.loginResult
+    val context = LocalContext.current
+
+    // Method to launch activity when loginResult changes to true
+    LaunchedEffect(loginResult) {
+        if (loginResult == true) {
+            val intent = Intent(context, Display::class.java)
+            context.startActivity(intent)
+        }
+    }
 
     Column(
         modifier = modifier.fillMaxSize(),
