@@ -17,7 +17,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false"
-            android:label="@string/title_activity_login"
+            android:label="LoginActivity"
             android:theme="@style/Theme.Project1CST438" />
         <activity
             android:name=".SignUpActivity"
