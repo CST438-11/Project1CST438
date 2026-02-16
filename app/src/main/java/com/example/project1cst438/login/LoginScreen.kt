@@ -7,6 +7,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -50,7 +51,8 @@ fun LoginScreen(viewModel: LoginViewModel, modifier: Modifier = Modifier, onBack
             value = username,
             onValueChange = { viewModel.username.value = it },
             placeholder = { Text("Enter username") },
-            textStyle = TextStyle(fontSize = 18.sp)
+            textStyle = TextStyle(fontSize = 18.sp),
+            modifier = Modifier.testTag("username")
         )
 
         Spacer(Modifier.height(16.dp))
@@ -60,14 +62,15 @@ fun LoginScreen(viewModel: LoginViewModel, modifier: Modifier = Modifier, onBack
             onValueChange = { viewModel.password.value = it },
             placeholder = { Text("Enter password") },
             visualTransformation = PasswordVisualTransformation(),
-            textStyle = TextStyle(fontSize = 18.sp)
+            textStyle = TextStyle(fontSize = 18.sp),
+            modifier = Modifier.testTag("password")
         )
 
         Spacer(Modifier.height(16.dp))
 
         Button(
             onClick = { viewModel.onLoginClicked() },
-            modifier = Modifier.width(170.dp).height(50.dp)
+            modifier = Modifier.width(170.dp).height(50.dp).testTag("loginButton")
         ) {
             Text("Login", fontSize = 18.sp)
         }

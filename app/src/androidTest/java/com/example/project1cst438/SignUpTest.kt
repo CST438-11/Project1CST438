@@ -11,9 +11,11 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.intent.Intents
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.data.local.AppDatabase
+import com.data.local.User
 import com.data.local.UserDao
 import com.data.local.UserRepository
 import com.example.project1cst438.ui.screens.SignUpViewModel
+import junit.framework.TestCase.assertNull
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -91,6 +93,30 @@ class SignUpTest {
 
     }
 
+    @Test
+    fun signupDuplicatedUser() = runTest {
+        val user = User(0, "new_user", "new_password")
+        //        Insert the user
+        userDao.insertUser(user)
+        val fakeViewModel = SignUpViewModel(repo)
+
+        composeTestRule.setContent {
+            SignUpScreen(onBack = {}, viewModelz = fakeViewModel)
+        }
+
+        composeTestRule.onNodeWithTag("name").performTextInput("new_user")
+        composeTestRule.onNodeWithTag("password").performTextInput("new_password")
+        composeTestRule.onNodeWithTag("confirmPassword").performTextInput("new_password")
+
+        composeTestRule.onNodeWithTag("button").performClick()
+
+        composeTestRule.waitForIdle()
+
+//        Should only be one user the one inserted above, no duplication, so it should only be one in the database
+        val allUsers = userDao.getAllUsers()
+        assert(allUsers.size == 1 )
+
+    }
 
 
 }

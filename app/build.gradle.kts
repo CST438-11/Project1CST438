@@ -53,6 +53,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.test.espresso:espresso-intents:3.7.0")
     val roomVersion = "2.6.1"
 
     implementation("androidx.room:room-runtime:$roomVersion")
@@ -98,4 +99,5 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:<compose-version>")
     debugImplementation("androidx.compose.ui:ui-test-manifest:<compose-version>")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.1")
 }
