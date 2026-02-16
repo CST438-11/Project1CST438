@@ -5,8 +5,8 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [User::class],
-    version = 1,
-    // exportSchema = true // <-- turn that on when I'm worrying about migrations later
+    version = 3,
+     exportSchema = false // <-- turn that on when I'm worrying about migrations later
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao

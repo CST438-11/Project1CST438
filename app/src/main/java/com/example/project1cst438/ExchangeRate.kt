@@ -1,5 +1,6 @@
 package com.example.project1cst438
 
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -21,6 +22,9 @@ import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.ui.platform.LocalContext
+import com.data.local.DatabaseProvider
+import com.data.local.UserRepository
+import com.example.project1cst438.ui.screens.ExchangeRateViewModelFactory
 
 
 class Display : ComponentActivity() {
@@ -30,7 +34,9 @@ class Display : ComponentActivity() {
         setContent {
             Project1CST438Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ExchangeRateScreen(modifier = Modifier.padding(innerPadding))
+                    ExchangeRateScreen(modifier = Modifier.padding(innerPadding),
+                    onBackToHome = { finish() }
+                    )
                 }
             }
         }
@@ -41,26 +47,28 @@ class Display : ComponentActivity() {
 @Composable
 fun ExchangeRateScreen(
     modifier: Modifier = Modifier,
-    viewModel: ExchangeRateViewModel = viewModel()
-) {
+    onBackToHome: () -> Unit) {
 
+
+    val context = LocalContext.current
+    var expanded by remember { mutableStateOf(false) }
+    val db = remember { DatabaseProvider.getDatabase(context) }
+    val userRepo = remember { UserRepository(db.userDao()) }
+
+    val viewModel: ExchangeRateViewModel = viewModel(
+        factory = ExchangeRateViewModel.provideFactory(userRepo)
+    )
     val rates = viewModel.rates
     val currencyOptions = rates?.conversionRates
         ?.keys
         ?.toList()
         ?: emptyList()
     val error = viewModel.errorMessage
-    val context = LocalContext.current
-    var expanded by remember { mutableStateOf(false) }
     Column(modifier = modifier.fillMaxSize()) {
         Row(modifier = Modifier.fillMaxWidth()
             .padding(horizontal = 2.dp)) {
             Button(
-                onClick = {
-                    context.startActivity(
-                        Intent(context, MainActivity::class.java)
-                    )
-                },
+                onClick = onBackToHome,
                 modifier = Modifier.fillMaxWidth(0.5f)
             ) {
                 Text("Back to Home")
@@ -108,10 +116,7 @@ fun ExchangeRateScreen(
             }
 
             Button(
-                onClick = {
-
-
-                },
+                onClick = { viewModel.saveDefaultCurrency() },
                 modifier = Modifier
                     .weight(1f)
             ) {

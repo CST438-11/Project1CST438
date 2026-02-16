@@ -25,6 +25,8 @@ class UserRepository(private val userDao: UserDao) {
     suspend fun login(username: String, password: String): User? {
         val user = userDao.getByUsername(username)
         if (user != null && user.password == password) {
+            userDao.clearLoggedIn()
+            userDao.setLoggedIn(user.id)
             return user
         }
         return null
@@ -32,5 +34,20 @@ class UserRepository(private val userDao: UserDao) {
 
     suspend fun deleteUser(username: String): Boolean {
         return userDao.deleteByUsername(username) > 0
+    }
+
+    // Get user's Id from repo
+    suspend fun getLoggedInUserId(): Int? = userDao.getLoggedInUserId()
+
+    // Update saved currency with user id
+    suspend fun setPreferredCurrencyForLoggedInUser(currency: String): Boolean {
+        val userId = userDao.getLoggedInUserId() ?: return false
+        userDao.updatePreferredCurrency(userId, currency)
+        return true
+    }
+
+    suspend fun getPreferredCurrencyForLoggedInUser(): String? {
+        val userId = userDao.getLoggedInUserId() ?: return null
+        return userDao.getPreferredCurrency(userId)
     }
 }
