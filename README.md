@@ -1,3 +1,12 @@
+# EasyRate
+An android application to quickly view and lookup different global exchange rates.
+
+## How to use EasyRate
+- Create an account or sign in from the home page
+- Browse exchange rates on the main display page
+- Select a different base currency from a dropdown menu to show exchange rates from the new base
+- Save a base currency as the account default to show whenever you view the display page while logged in
+
 # Project 01 Retrospective and overview
 
 [Video Walkthrough]() 
