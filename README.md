@@ -20,7 +20,7 @@ We got styling help for this document from [this guide](https://docs.github.com/
 
 ## Introduction
 
-* Communcation was managed mostly in Slack channel (We made a group chat for our team)
+* Communication was managed mostly in Slack channel (We made a group chat for our team)
 * Initially we had 15 issues, but eventually added more which became 17
 * Currently completed 11 issues 
 
@@ -43,14 +43,14 @@ We got styling help for this document from [this guide](https://docs.github.com/
 + Why was it a challenge?
   + It was a challenge because it was my first time dong it and my first time hearing about it.
 + How was the challenge addressed?
-  + I addresed the challenged by using youtube videos and watching tutorials how a ViewModel works.
+  + I addressed the challenged by using youtube videos and watching tutorials how a ViewModel works.
   + In addition, going to stackoverflow if there were people asking similar questions such as "What is a ViewModel". 
 + Favorite / most interesting part of this project?
   + Favorite thing that I liked to do in this project was connecting the database to the signup and actually inserting users into the database. Basically, seeing how everything connect to one another.
 + If you could do it over, what would you change?
   + One thing I would change is making a different file for the Activity & the Compose since that is the best practice, unfortunately I did the opposite and created them in a single file
 + What is the most valuable thing you learned?
-  + The most valuable thing I learned is communcation is a big thing in group project because without it, it could get messy and confusion starts to happen.
+  + The most valuable thing I learned is communication is a big thing in group project because without it, it could get messy and confusion starts to happen.
 
 ### Brandon Algarra
 - [Brandon A. Pull Request](https://github.com/CST438-11/Project1CST438/pulls/BAlgarra)
@@ -68,11 +68,11 @@ My role was to create the initial user stores and issues, design the homepage an
 + Favorite / most interesting part of this project
   + Saving to user table for logged in user, and being able to use that data on another screen.
 + If you could do it over, what would you change?
-  + Try to schedule and gauge issues better using yeterday's weather. In the beginning we allotted more time than was necessary to issues that ended up being not as critical.
+  + Try to schedule and gauge issues better using yesterday's weather. In the beginning we allotted more time than was necessary to issues that ended up being not as critical.
 + What is the most valuable thing you learned?
   + Understand the why's when following a tutorial, communicate to ensure pages interact properly.
 
-### Kristopher Churdch
+### Kristopher Church
 - [Kristopher C. Pull Request](https://github.com/CST438-11/Project1CST438/pulls/KristopherLC)
 - [Kristopher C. Issues](https://github.com/CST438-11/Project1CST438/issues?q=is%3Aissue%20state%3Aopen%20assignee%3AKristopherLC)
  
@@ -80,7 +80,7 @@ My role was to create the initial user stores and issues, design the homepage an
 I worked on creating the data layer which includes defining the database and how to manipulate its data. Then I integrated the database into the login activity and produced tests to verify the integrity of this.
 
 + What was the biggest challenge? 
-  + Knowing proper project directory structure. This was my first time learning about things like view models, repositorys, view model factories, etc and the challenge was to know all of the files I needed and where to put them in the project while adhering to scalable practices. Also writing comments is kind of tough because I get lazy and don't think about my future self.
+  + Knowing proper project directory structure. This was my first time learning about things like view models, repositories, view model factories, etc and the challenge was to know all of the files I needed and where to put them in the project while adhering to scalable practices. Also writing comments is kind of tough because I get lazy and don't think about my future self.
 + Why was it a challenge?
   + Lack of previous experience. Every time I'd get information on the first step, I'd have questions about how to do that which would lead me to more questions.
 + How was the challenge addressed?
@@ -88,7 +88,7 @@ I worked on creating the data layer which includes defining the database and how
 + Favorite / most interesting part of this project
   + I actually really liked making the data layer. It gave me an understanding of how a client side database is built, though I would like to know how server side would work next.
 + If you could do it over, what would you change?
-  + Mabye I'd use a loginRoute file, but I'm not sure what that is yet. Also I'd be interested in further enhancing the database such as adding hashed passwords. Basically create a proper trust boundary.
+  + Maybe I'd use a loginRoute file, but I'm not sure what that is yet. Also I'd be interested in further enhancing the database such as adding hashed passwords. Basically create a proper trust boundary.
 + What is the most valuable thing you learned?
   + Everything. I literally didn't even know how to code in kotlin in the beginning and had completely forgotten what DAOs were. So in conclusion, an introductory understanding of kotlin and knowing how to organize a project into data, view, and test layers.
 
