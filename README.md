@@ -17,7 +17,7 @@ We got styling help for this document from [this guide](https://docs.github.com/
 
 ## Team Retrospective
 
-### Team Member Names (Neil Ca, Brandon A, Kristopher C, Aidan S)
+### Team Member Names (Neil C, Brandon A, Kristopher C, Aidan S)
 - Neil Cabanilla
 - Brandon Algarra
 - Kristopher Church
@@ -29,13 +29,19 @@ We got styling help for this document from [this guide](https://docs.github.com/
 
 #### My roles were to create the functionality for the SignUp Page
 
-+ What was the biggest challenge? The biggest challenge to me was creating the ViewModel for the SignUpPage
-+ Why was it a challenge? It was a challenge because it was my first time dong it and my first time hearing about it.
-  + How was the challenge addressed? I addresed the challenged by using youtube videos and watching tutorials how a ViewModel works.
++ What was the biggest challenge?
+  + The biggest challenge to me was creating the ViewModel for the SignUpPage
++ Why was it a challenge?
+  + It was a challenge because it was my first time dong it and my first time hearing about it.
++ How was the challenge addressed?
+  + I addresed the challenged by using youtube videos and watching tutorials how a ViewModel works.
   + In addition, going to stackoverflow if there were people asking similar questions such as "What is a ViewModel". 
-+ Favorite / most interesting part of this project? Favorite thing that I liked to do in this project was connecting the database to the signup and actually inserting users into the database. Basically, seeing how everything connect to one another.
-+ If you could do it over, what would you change? One thing I would change is making a different file for the Activity & the Compose since that is the best practice, unfortunately I did the opposite and created them in a single file
-+ What is the most valuable thing you learned? The most valuable thing I learned is communcation is a big thing in group project because without it, it could get messy and confusion starts to happen.
++ Favorite / most interesting part of this project?
+  + Favorite thing that I liked to do in this project was connecting the database to the signup and actually inserting users into the database. Basically, seeing how everything connect to one another.
++ If you could do it over, what would you change?
+  + One thing I would change is making a different file for the Activity & the Compose since that is the best practice, unfortunately I did the opposite and created them in a single file
++ What is the most valuable thing you learned?
+  + The most valuable thing I learned is communcation is a big thing in group project because without it, it could get messy and confusion starts to happen.
 
 ### Brandon Algarra
 - [Brandon A. Pull Request](https://github.com/CST438-11/Project1CST438/pulls/BAlgarra)
@@ -77,7 +83,7 @@ Carol mostly worked on getting the app to run faster, better, and higher.  She d
 + What is the most valuable thing you learned?
   + Do the work early and document EVERYTHING
 
-  ### Aidan Shanley
+### Aidan Shanley
 - [Aidan S. Pull Request](https://github.com/CST438-11/Project1CST438/pulls/AShanleyCSUMB)
 - [Aidan S. Issues](https://github.com/CST438-11/Project1CST438/issues?q=is%3Aissue%20state%3Aopen%20assignee%3AAShanleyCSUMB)
 
@@ -102,4 +108,4 @@ I worked on the login, signup, and profile pages associated with users who use t
 
 - The project is pretty successful in our opinion because we were able to make the database to work as well as the API
 - The largest victory is getting everything to work together, and getting the main priorities done such as creating database, creating the layout, and the API working
-- The project ... final assessment INSERT HERE
+- Overall, the project was successful, but we would have liked to add more features to the app, such as allowing users to input an amount of money and convert it into the currency of their choice.
