@@ -66,22 +66,22 @@ Carol mostly worked on getting the app to run faster, better, and higher.  She d
 ### Kristopher Churdch
 - [Kristopher C. Pull Request](https://github.com/CST438-11/Project1CST438/pulls/KristopherLC)
 - [Kristopher C. Issues](https://github.com/CST438-11/Project1CST438/issues?q=is%3Aissue%20state%3Aopen%20assignee%3AKristopherLC)
-
-#### What was your role / which stories did you work on
-Carol mostly worked on getting the app to run faster, better, and higher.  She did the best work possible but her contributions were overpowered and not well received by the fans.
+ 
+#### Data Layer, View & Test Layer for LoginActivity
+I worked on creating the data layer which includes defining the database and how to manipulate its data. Then I integrated the database into the login activity and produced tests to verify the integrity of this.
 
 + What was the biggest challenge? 
-  + Managing pull requests and merges
+  + Knowing proper project directory structure. This was my first time learning about things like view models, repositorys, view model factories, etc and the challenge was to know all of the files I needed and where to put them in the project while adhering to scalable practices. Also writing comments is kind of tough because I get lazy and don't think about my future self.
 + Why was it a challenge?
-  + We were all new to git/github and not everyone followed convention
+  + Lack of previous experience. Every time I'd get information on the first step, I'd have questions about how to do that which would lead me to more questions.
 + How was the challenge addressed?
-  + I went to the TA for help and used ChatGPT and web resources to get more comfortable with git.
+  + I used web resources, collaborated with team members, and asked ChatGPT on what best practices typically look like.
 + Favorite / most interesting part of this project
-  + Finally getting the IDs from the API calls to store in the ROOM database
+  + I actually really liked making the data layer. It gave me an understanding of how a client side database is built, though I would like to know how server side would work next.
 + If you could do it over, what would you change?
-  + I would get the ROOM database setup FIRST
+  + Mabye I'd use a loginRoute file, but I'm not sure what that is yet. Also I'd be interested in further enhancing the database such as adding hashed passwords. Basically create a proper trust boundary.
 + What is the most valuable thing you learned?
-  + Do the work early and document EVERYTHING
+  + Everything. I literally didn't even know how to code in kotlin in the beginning and had completely forgotten what DAOs were. So in conclusion, an introductory understanding of kotlin and knowing how to organize a project into data, view, and test layers.
 
 ### Aidan Shanley
 - [Aidan S. Pull Request](https://github.com/CST438-11/Project1CST438/pulls/AShanleyCSUMB)
