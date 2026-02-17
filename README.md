@@ -9,8 +9,8 @@ An android application to quickly view and lookup different global exchange rate
 
 # Project 01 Retrospective and overview
 
-[Video Walkthrough]() 
-<!-- Ads have really ruined rick-rolling. -->
+[Video Walkthrough](https://youtu.be/gzvmE8jFKQQ?si=rXLB2NQwBPB0yRUC) 
+
 [Github Repo](https://github.com/CST438-11/Project1CST438)
 
 ## Overview
