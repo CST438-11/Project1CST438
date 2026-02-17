@@ -48,7 +48,7 @@ Carol mostly worked on getting the app to run faster, better, and higher.  She d
   + Managing pull requests and merges
 + Why was it a challenge?
   + We were all new to git/github and not everyone followed convention
-  + How was the challenge addressed?
++ How was the challenge addressed?
   + I went to the TA for help and used ChatGPT and web resources to get more comfortable with git.
 + Favorite / most interesting part of this project
   + Finally getting the IDs from the API calls to store in the ROOM database
@@ -68,7 +68,7 @@ Carol mostly worked on getting the app to run faster, better, and higher.  She d
   + Managing pull requests and merges
 + Why was it a challenge?
   + We were all new to git/github and not everyone followed convention
-  + How was the challenge addressed?
++ How was the challenge addressed?
   + I went to the TA for help and used ChatGPT and web resources to get more comfortable with git.
 + Favorite / most interesting part of this project
   + Finally getting the IDs from the API calls to store in the ROOM database
@@ -82,20 +82,20 @@ Carol mostly worked on getting the app to run faster, better, and higher.  She d
 - [Aidan S. Issues](https://github.com/CST438-11/Project1CST438/issues?q=is%3Aissue%20state%3Aopen%20assignee%3AAShanleyCSUMB)
 
 #### What was your role / which stories did you work on
-Carol mostly worked on getting the app to run faster, better, and higher.  She did the best work possible but her contributions were overpowered and not well received by the fans.
+I worked on the login, signup, and profile pages associated with users who use the site.
 
 + What was the biggest challenge? 
-  + Managing pull requests and merges
+  + After initial drafts of some of pages are complete, I saw the biggest to challenge to be syncing up my machine's changes with the public repository.
 + Why was it a challenge?
-  + We were all new to git/github and not everyone followed convention
-  + How was the challenge addressed?
-  + I went to the TA for help and used ChatGPT and web resources to get more comfortable with git.
+  + Though programs that support GitHub allow for cloning repositories, they don't automatically save such changes back to GitHub.
++ How was the challenge addressed?
+  + I copied and pasted each changed file, placing them into folders similar to my machine's setup.
 + Favorite / most interesting part of this project
-  + Finally getting the IDs from the API calls to store in the ROOM database
+  + For me, it's most interesting to see my work and all my team's work shown together as part of the final result.
 + If you could do it over, what would you change?
-  + I would get the ROOM database setup FIRST
+  + I would try to communicate more easily and more frequently with my team in case they suggest any changes as stuff gets sent in.
 + What is the most valuable thing you learned?
-  + Do the work early and document EVERYTHING
+  + Team collaboration is essential for a successful project.
 
 
 ## Conclusion
