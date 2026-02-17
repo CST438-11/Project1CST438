@@ -42,20 +42,20 @@ We got styling help for this document from [this guide](https://docs.github.com/
 - [Brandon A. Issues](https://github.com/CST438-11/Project1CST438/issues?q=is%3Aissue%20state%3Aopen%20assignee%3ABAlgarra)
 
 #### What was your role / which stories did you work on
-Carol mostly worked on getting the app to run faster, better, and higher.  She did the best work possible but her contributions were overpowered and not well received by the fans.
+My role was to create the initial user stores and issues, design the homepage and exchange rate page, and implement the api to fetch data to display on the exchange rate page.
 
 + What was the biggest challenge? 
-  + Managing pull requests and merges
+  + Understanding how to observe the ViewModel and recompose the UI accordingly in jetpack compose. 
 + Why was it a challenge?
-  + We were all new to git/github and not everyone followed convention
+  + It was a different structure than what I was used to, and being able to fully take advantage of it's features took much more than I originally understood.
 + How was the challenge addressed?
-  + I went to the TA for help and used ChatGPT and web resources to get more comfortable with git.
+  + Following the Mars Photo App tutorial, multiple video tutorials, and reading the composable documentation.
 + Favorite / most interesting part of this project
-  + Finally getting the IDs from the API calls to store in the ROOM database
+  + Saving to user table for logged in user, and being able to use that data on another screen.
 + If you could do it over, what would you change?
-  + I would get the ROOM database setup FIRST
+  + Try to schedule and gauge issues better using yeterday's weather. In the beginning we allotted more time than was necessary to issues that ended up being not as critical.
 + What is the most valuable thing you learned?
-  + Do the work early and document EVERYTHING
+  + Understand the why's when following a tutorial, communicate to ensure pages interact properly.
 
 ### Kristopher Churdch
 - [Kristopher C. Pull Request](https://github.com/CST438-11/Project1CST438/pulls/KristopherLC)
